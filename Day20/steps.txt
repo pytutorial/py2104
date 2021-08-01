@@ -1,0 +1,11 @@
+- B1: Cài django (nếu chưa cài)
+  pip install django
+
+- B2 : Tạo mới project
+  django-admin startproject <project_name>
+
+- B3: Chạy project
+  cd <project_name> (chỉ cần thiết nếu đang chưa ở thư mục project)
+  python manage.py runserver
+
+- B4: Mở trình duyệt, truy cập http://127.0.0.1:8000/
