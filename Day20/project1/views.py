@@ -18,3 +18,48 @@ texts = [
     'Masan Group đạt doanh thu thuần 9.184 tỷ đồng trong quý II/2018, tăng trưởng 11% so với quý I với 8.274 tỷ đồng. Trong đó, lĩnh vực thực phẩm -đồ uống, chế biến sâu khoáng sản và đóng góp của Techcombank đều đạt đăng trưởng hai chữ số.',
     'Đội cứu nạn gồm 10 bác sỹ, y sỹ, y tá với đầy đủ thuốc men và thiết bị của Hoàng Anh Gia Lai cùng 50 tấn gạo, 100.000 gói mì tôm, 5 tấn cá khô, 2.000 bộ quần áo, 100 túi bảo quản tử thi sẽ được vận chuyển sang Lào vào chiều nay.'
 ]
+
+# 127.0.0.1:8000/search?keyword=bắt đầu
+def search(request):
+    data = request.GET
+    word = data.get('keyword', '')
+    result = []
+    for line in texts:
+        if word in line:
+            result.append(line)
+    result = '<br><br>'.join(result)
+    print('result=', result)
+    return HttpResponse(result)
+
+#127.0.0.1:8000/add?a=4&b=5
+def add2Number(request):
+    data = request.GET
+    #print('data=', data)
+    #print('a=', data.get('a'))
+    a = float(data.get('a', 0))
+    b = float(data.get('b', 0))
+    s = str(a+b)
+    return HttpResponse(s)
+
+# 127.0.0.1:8000/hello?name=Nguyen+Van+A&gender=F&age=30
+def hello(request):
+    data = request.GET
+    name = data.get('name', '')
+    age = int(data.get('age', 0))
+    gender = data.get('gender')
+    salutation = ''
+
+    if 16 < age <= 40:
+        if gender == 'M':
+            salutation = 'anh'
+        elif gender == 'F':
+            salutation = 'chị'
+        
+    elif age > 40:
+        if gender == 'M':
+            salutation = 'ông'
+        elif gender == 'F':
+            salutation = 'bà'
+        
+    message = f'Xin chào {salutation} {name}'
+    return HttpResponse(message)
