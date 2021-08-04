@@ -5,6 +5,7 @@ def testPost(request):
         return HttpResponse('Hello')
 
 from dataclasses import dataclass, asdict
+import json
 
 @dataclass
 class Student:
@@ -23,5 +24,5 @@ def getStudentInfo(request):
     number = data.get('number', '')
     for st in student_list:
         if st.number == number:
-            return HttpResponse(st.name)
+            return HttpResponse(json.dumps(asdict(st)))
 
