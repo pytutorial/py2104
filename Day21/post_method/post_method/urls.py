@@ -18,6 +18,7 @@ from django.urls import path
 from views import *
 
 urlpatterns = [
+    path('get-book-info', getBookInfo),
     path('get-student-info', getStudentInfo),
     path('test-post', testPost),
     path('admin/', admin.site.urls),

@@ -26,3 +26,30 @@ def getStudentInfo(request):
         if st.number == number:
             return HttpResponse(json.dumps(asdict(st)))
 
+@dataclass
+class Book:
+    isbn: str
+    name: str
+    author: str
+    published_year: int
+
+book_list = [
+    Book('12321321', 'Vòng quanh thế giới trong 21 ngày', 'Nhiều tác giả', 2050),
+    Book('32432434', 'Làm giàu không khó', 'Nguyễn Nông Dân', 1945),
+    Book('32132132', 'Cách mạng CN 4.0', 'Nguyễn Công Nhân', 1991),
+]
+
+# 127.0.0.1:8000/get-book-info?isbn=12321321
+def getBookInfo(request):
+    data = request.GET
+    isbn = data.get('isbn')
+    for book in book_list:
+        if book.isbn == isbn:
+            return HttpResponse(json.dumps({
+                'isbn': book.isbn,
+                'name': book.name,
+                'author': book.author,
+                'published_year': book.published_year,
+            }))
+
+# Viet script test test_get_book_info --> lay duoc thong tin sach
