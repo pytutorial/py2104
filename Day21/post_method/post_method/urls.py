@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from views import *
+#from app1 import views as app1_views
+from django.urls import include
 
 urlpatterns = [
+    path('app-1/', include('app1.urls')),
+    #path('app-1/page-1', app1_views.page1),
     path('get-book-info', getBookInfo),
     path('get-student-info/<number>', getStudentInfo),
     path('test-post', testPost),
