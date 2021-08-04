@@ -19,10 +19,9 @@ texts = [
     'Đội cứu nạn gồm 10 bác sỹ, y sỹ, y tá với đầy đủ thuốc men và thiết bị của Hoàng Anh Gia Lai cùng 50 tấn gạo, 100.000 gói mì tôm, 5 tấn cá khô, 2.000 bộ quần áo, 100 túi bảo quản tử thi sẽ được vận chuyển sang Lào vào chiều nay.'
 ]
 
-# 127.0.0.1:8000/search?keyword=bắt đầu
-def search(request):
-    data = request.GET
-    word = data.get('keyword', '')
+# 127.0.0.1:8000/search/bắt+đầu
+def search(request, keyword):
+    word = keyword
     result = []
     for line in texts:
         if word in line:

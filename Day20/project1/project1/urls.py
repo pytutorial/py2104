@@ -20,7 +20,7 @@ urlpatterns = [
     path('', index),
     path('add', add2Number),
     path('page-2', page2),
-    path('search', search),
+    path('search/<keyword>', search),
     path('hello', hello),
     path('admin/', admin.site.urls),
 ]

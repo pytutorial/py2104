@@ -1,0 +1,8 @@
+GET                                         POST
+- Tham số nằm trên query string (?a=...)    Tham số nằm trong form
+- Giới hạn kích thước content gửi lên       Không giới hạn kích thước dữ liệu truyền
+(4kbyte) --> truyền dữ liệu nhỏ
+
+- Các thao tác lấy về dữ liệu               - Các thao tác đẩy dữ liệu lên 
+- Các thao tác không cần tính bảo mật       - Các thao tác cần tính bảo mật cao (login)
+cao 
