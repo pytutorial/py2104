@@ -18,10 +18,11 @@ student_list = [
     Student('1001', 'Nguyen Van An', 'M', '2000-01-01'),
     Student('1002', 'Nguyen Thi Binh', 'F', '2001-01-01'), #trailing comma
 ]
-#127.0.0.1:8000/get-student-info?number=1001
-def getStudentInfo(request):
-    data = request.GET
-    number = data.get('number', '')
+
+#127.0.0.1:8000/get-student-info/1001
+def getStudentInfo(request, number):
+    #data = request.GET
+    #number = data.get('number', '')
     for st in student_list:
         if st.number == number:
             return HttpResponse(json.dumps(asdict(st)))
