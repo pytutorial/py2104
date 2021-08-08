@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from app.views import *
 urlpatterns = [
+    path('get-customer-by-phone/<phone>', get_customer_by_phone),
+    path('search-customer', search_customer),
     path('get-product-by-code/<code>', get_product_by_code),
     path('search-product', search_product),
     path('admin/', admin.site.urls),
