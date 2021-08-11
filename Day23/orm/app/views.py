@@ -81,7 +81,8 @@ def serialize_order(order):
         'product_name': order.product.name,
         'qty': order.qty,
         'price_unit': order.price_unit,
-        'total': order.total
+        'total': order.total,
+        'created_date': str(order.created_date)
     }
 
 #127.0.0.1:8000/search-order-by-product/IPX

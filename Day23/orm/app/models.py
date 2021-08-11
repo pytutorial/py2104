@@ -25,3 +25,4 @@ class Order(models.Model):
     qty = models.IntegerField()
     price_unit = models.IntegerField()
     total = models.IntegerField()
+    created_date = models.DateTimeField(auto_now_add=True, null=True)
