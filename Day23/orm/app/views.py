@@ -28,14 +28,22 @@ def search_product(request):
 
 def search_product_by_price(request):
     input_data = request.GET
-    print('input_data=', input_data)
-    min_price = int(input_data['min_price']) * 1000000
-    max_price = int(input_data['max_price']) * 1000000
-    print('min_price=', min_price, ', max_price=', max_price)
-    product_list = Product.objects.filter(
-        price__gte=min_price,   # price >= min_price
-        price__lte=max_price    # price <= max_price
-    )
+    #print('input_data=', input_data)
+    product_list = Product.objects.all()
+    if 'min_price' in input_data:
+        min_price = int(input_data['min_price']) * 1000000
+        product_list = product_list.filter(price__gte=min_price)
+    
+    if 'max_price' in input_data:
+        max_price = int(input_data['max_price']) * 1000000
+        product_list = product_list.filter(price__lte=max_price)
+    
+    #print('min_price=', min_price, ', max_price=', max_price)
+
+    #product_list = Product.objects.filter(
+    #    price__gte=min_price,   # price >= min_price
+    #    price__lte=max_price    # price <= max_price
+    #)
     result = [serialize_product(product) for product in product_list]
     return HttpResponse(json.dumps(result))
 
