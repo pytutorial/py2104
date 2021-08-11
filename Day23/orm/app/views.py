@@ -47,9 +47,18 @@ def search_product_by_price(request):
     result = [serialize_product(product) for product in product_list]
     return HttpResponse(json.dumps(result))
 
+def serialize_customer(customer):
+    return {
+        'id': customer.id,
+        'name': customer.name,
+        'phone': customer.phone,
+        'address': customer.address
+    }
+
 def get_customer_by_phone(request, phone):
     customer = Customer.objects.get(phone=phone)
-    return HttpResponse(customer.name)
+    data = serialize_customer(customer)
+    return HttpResponse(json.dumps(data))
 
 def search_customer(request):
     input_data = request.GET
@@ -57,5 +66,5 @@ def search_customer(request):
     print('keyword=', keyword)
     customer_list = Customer.objects.filter(name__icontains=keyword)
     print('customer_list=', customer_list)
-    result = ','.join([customer.name for customer in customer_list])
+    result = json.dumps([serialize_customer(customer) for customer in customer_list])
     return HttpResponse(result)
