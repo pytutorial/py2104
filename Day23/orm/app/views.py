@@ -1,6 +1,7 @@
 from django.shortcuts import HttpResponse
 from .models import *
 import json
+from django.db.models import Q
 
 # Create your views here.
 
@@ -64,7 +65,11 @@ def search_customer(request):
     input_data = request.GET
     keyword = input_data.get('keyword', '')
     print('keyword=', keyword)
-    customer_list = Customer.objects.filter(name__icontains=keyword)
+
+    customer_list = Customer.objects.filter(
+        Q(name__icontains=keyword)|Q(phone__icontains=keyword)
+    )
+
     print('customer_list=', customer_list)
     result = json.dumps([serialize_customer(customer) for customer in customer_list])
     return HttpResponse(result)
