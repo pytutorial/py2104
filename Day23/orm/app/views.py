@@ -83,8 +83,15 @@ def serialize_order(order):
         'price_unit': order.price_unit,
         'total': order.total
     }
+
 #127.0.0.1:8000/search-order-by-product/IPX
 def search_order_by_product(request, product_code):
     order_list = Order.objects.filter(product__code=product_code)
+    result = json.dumps([serialize_order(order) for order in order_list])
+    return HttpResponse(result)
+
+#127.0.0.1:8000/search-order-by-customer/0123456789
+def search_order_by_customer(request, customer_phone):
+    order_list = Order.objects.filter(customer__phone=customer_phone)
     result = json.dumps([serialize_order(order) for order in order_list])
     return HttpResponse(result)
