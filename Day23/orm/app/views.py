@@ -73,3 +73,18 @@ def search_customer(request):
     print('customer_list=', customer_list)
     result = json.dumps([serialize_customer(customer) for customer in customer_list])
     return HttpResponse(result)
+
+def serialize_order(order):
+    return {
+        'id': order.id,
+        'customer_name': order.customer.name,
+        'product_name': order.product.name,
+        'qty': order.qty,
+        'price_unit': order.price_unit,
+        'total': order.total
+    }
+#127.0.0.1:8000/search-order-by-product/IPX
+def search_order_by_product(request, product_code):
+    order_list = Order.objects.filter(product__code=product_code)
+    result = json.dumps([serialize_order(order) for order in order_list])
+    return HttpResponse(result)

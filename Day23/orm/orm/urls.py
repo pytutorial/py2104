@@ -22,5 +22,6 @@ urlpatterns = [
     path('get-product-by-code/<code>', get_product_by_code),
     path('search-product', search_product),
     path('search-product-by-price', search_product_by_price),
+    path('search-order-by-product/<product_code>', search_order_by_product),
     path('admin/', admin.site.urls),
 ]
