@@ -18,3 +18,10 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+class Order(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    qty = models.IntegerField()
+    price_unit = models.IntegerField()
+    total = models.IntegerField()
