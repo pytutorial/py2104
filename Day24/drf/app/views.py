@@ -65,7 +65,7 @@ def search_customer(request):
 
 #127.0.0.1:8000/api/update-customer/1
 @api_view(['PUT'])
-def updateCustomer(request, pk):
+def update_customer(request, pk):
     data = request.data
     name = data.get('name', '')
     phone = data.get('phone', '')
@@ -78,8 +78,9 @@ def updateCustomer(request, pk):
     customer.save()  # commit to DB
     return Response({'success': True})
 
+#127.0.0.1:8000/api/delete-customer/1
 @api_view(['DELETE'])
-def deleteCustomer(request, pk):
+def delete_customer(request, pk):
     customer = Customer.objects.get(pk=pk)
     customer.delete()
     return Response({'success': True})
