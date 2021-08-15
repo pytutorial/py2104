@@ -80,4 +80,6 @@ def updateCustomer(request, pk):
 
 @api_view(['DELETE'])
 def deleteCustomer(request, pk):
-    ...
+    customer = Customer.objects.get(pk=pk)
+    customer.delete()
+    return Response({'success': True})
