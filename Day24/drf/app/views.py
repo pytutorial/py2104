@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import *
+from django.db.models import Q
 
 # 127.0.0.1:8000/api/hello
 @api_view(['GET'])
@@ -38,3 +39,26 @@ def create_user(request):
         address=address
     )
     return Response({'success': True})
+
+def serialize_customer(customer):
+    return {
+        'id': customer.id,
+        'name': customer.name,
+        'phone': customer.phone,
+        'address': customer.address
+    }
+
+#127.0.0.1:8000/api/search-customer?keyword=A
+@api_view(['GET'])
+def search_customer(request):
+    data = request.GET
+    keyword = data.get('keyword', '')
+    customer_list = Customer.objects.filter(name__icontains=keyword)
+    #customer_list = Customer.objects.filter(
+    #    Q(name__icontains=keyword)|Q(phone__icontains=keyword)
+    #)
+    data = []
+    for customer in customer_list:
+        data.append(serialize_customer(customer))
+    # data = [serialize_customer(customer) for customer_list]
+    return Response(data)
