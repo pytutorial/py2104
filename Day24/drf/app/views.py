@@ -62,3 +62,22 @@ def search_customer(request):
         data.append(serialize_customer(customer))
     # data = [serialize_customer(customer) for customer_list]
     return Response(data)
+
+#127.0.0.1:8000/api/update-customer/1
+@api_view(['PUT'])
+def updateCustomer(request, pk):
+    data = request.data
+    name = data.get('name', '')
+    phone = data.get('phone', '')
+    address = data.get('address', '')
+    #TODO: validate
+    customer = Customer.objects.get(pk=pk)
+    customer.name = name
+    customer.phone = phone
+    customer.address = address
+    customer.save()  # commit to DB
+    return Response({'success': True})
+
+@api_view(['DELETE'])
+def deleteCustomer(request, pk):
+    ...
