@@ -19,9 +19,22 @@ def hello_post(request):
 @api_view(['POST'])
 def create_user(request):
     data = request.data # {'name': '...', 'phone': '...', 'address': '...'}
+    name = data.get('name', '')
+    phone = data.get('phone', '')
+    address = data.get('address', '')
+    # Validate
+    if name.strip() == '':
+        return Response({'error': 'Họ tên không được thiếu'},status=400)
+    
+    if phone.strip() == '':
+        return Response({'error': 'Số điện thoại không được thiếu'},status=400)
+    
+    if Customer.objects.filter(phone=phone).exists():
+        return Response({'error': 'Số điện thoại đã tồn tại'}, status=400)
+
     Customer.objects.create(
-        name=data.get('name', ''),
-        phone=data.get('phone', ''),
-        address=data.get('address', '')
+        name=name,
+        phone=phone,
+        address=address
     )
     return Response({'success': True})
