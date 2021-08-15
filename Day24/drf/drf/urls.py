@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from app.views import *
 urlpatterns = [
-    path('api/create-user', create_user),
+    path('api/create-customer', create_customer),
     path('api/search-customer', search_customer),
     path('api/update-customer/<pk>', update_customer),
     path('api/delete-customer/<pk>', delete_customer),

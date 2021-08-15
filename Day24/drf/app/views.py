@@ -18,7 +18,7 @@ def hello_post(request):
     return Response({'message': f'Hello {name}'})
 
 @api_view(['POST'])
-def create_user(request):
+def create_customer(request):
     data = request.data # {'name': '...', 'phone': '...', 'address': '...'}
     name = data.get('name', '')
     phone = data.get('phone', '')
