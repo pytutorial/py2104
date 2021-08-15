@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from app.views import *
 urlpatterns = [
+    path('api/create-user', create_user),
     path('api/hello', hello),
     path('api/hello-post', hello_post),
     path('admin/', admin.site.urls),
