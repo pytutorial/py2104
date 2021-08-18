@@ -66,6 +66,11 @@ class ProductSerializer(ModelSerializer):
         model = Product
         fields = '__all__'
 
+    def validate_price(self, price):
+        if price % 1000 != 0:
+            raise ValidationError('Giá sản phẩm phải chia hết cho 1000')
+        return price
+
 # 127.0.0.1:8000/api/get-product-by-code/IPX
 @api_view(['GET'])
 def get_product_by_code(request, code):
