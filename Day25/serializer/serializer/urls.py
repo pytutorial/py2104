@@ -26,4 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('api/get-product-by-code/<code>', get_product_by_code),
+    path('api/search-product', search_product),
+    path('api/create-product', create_product),
+    path('api/update-product/<pk>', update_product),
 ]

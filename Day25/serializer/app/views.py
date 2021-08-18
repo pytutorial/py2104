@@ -72,3 +72,16 @@ def get_product_by_code(request, code):
     product = Product.objects.get(code=code)
     data = ProductSerializer(product).data
     return Response(data)
+
+#127.0.0.1:8000/api/search-product?keyword=A
+@api_view(['GET'])
+def search_product(request):
+    ...
+
+@api_view(['POST'])
+def create_product(request):
+    ...
+
+@api_view(['PUT'])
+def update_product(request, pk):
+    ...
