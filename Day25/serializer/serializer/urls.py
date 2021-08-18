@@ -18,6 +18,7 @@ from django.urls import path
 from app.views import *
 
 urlpatterns = [
+    path('api/create-customer', create_customer),
     path('api/search-customer', search_customer),
     path('api/get-customer-by-phone/<phone>', get_customer_by_phone),
     path('api/hello', hello),
