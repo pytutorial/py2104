@@ -34,3 +34,15 @@ def create_customer(request):
         return Response(serializer.errors, status=400)
     serializer.save()
     return Response(serializer.data)
+
+@api_view(['PUT'])
+def update_customer(request, pk):
+    customer = Customer.objects.get(pk=pk)
+    serializer = CustomerSerializer(
+        data=request.data,
+        instance=customer
+    )
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+    serializer.save()
+    return Response(serializer.data)
