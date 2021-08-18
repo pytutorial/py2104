@@ -27,3 +27,10 @@ def search_customer(request):
     data = CustomerSerializer(customer_list, many=True).data
     return Response(data)
     
+@api_view(['POST'])
+def create_customer(request):
+    serializer = CustomerSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+    serializer.save()
+    return Response(serializer.data)
