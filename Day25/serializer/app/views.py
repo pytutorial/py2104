@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ValidationError
 from .models import *
 
 @api_view(['GET'])
@@ -11,6 +12,15 @@ class CustomerSerializer(ModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
+
+    def validate_phone(self, phone):
+        if not phone:       # blank
+            return phone
+        
+        if not phone.isdigit():
+            raise ValidationError('Số điện thoại chỉ được chứa chữ số')
+        
+        return phone  # do not forget 'return' !!
 
 @api_view(['GET'])
 def get_customer_by_phone(request, phone):
