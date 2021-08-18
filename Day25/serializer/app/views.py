@@ -77,14 +77,18 @@ def get_product_by_code(request, code):
 @api_view(['GET'])
 def search_product(request):
     data = request.GET
-    keyword = data.get('keyword')
+    keyword = data.get('keyword', '')
     product_list = Product.objects.filter(name__icontains=keyword)
     data = ProductSerializer(product_list, many=True).data
     return Response(data)
 
 @api_view(['POST'])
 def create_product(request):
-    ...
+    serializer = ProductSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+    serializer.save()
+    return Response(serializer.data)
 
 @api_view(['PUT'])
 def update_product(request, pk):
