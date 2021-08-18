@@ -19,4 +19,11 @@ def get_customer_by_phone(request, phone):
     # data = {'id': customer.id, 'name': customer.name, 'phone': customer.phone, ...}
     return Response(data)
 
+@api_view(['GET'])
+def search_customer(request):
+    data = request.GET
+    keyword = data.get('keyword', '')
+    customer_list = Customer.objects.filter(name__icontains=keyword)
+    data = CustomerSerializer(customer_list, many=True).data
+    return Response(data)
     
