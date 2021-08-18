@@ -24,4 +24,6 @@ urlpatterns = [
     path('api/get-customer-by-phone/<phone>', get_customer_by_phone),
     path('api/hello', hello),
     path('admin/', admin.site.urls),
+
+    path('api/get-product-by-code/<code>', get_product_by_code),
 ]

@@ -11,7 +11,7 @@ def hello(request):
 class CustomerSerializer(ModelSerializer):
     class Meta:
         model = Customer
-        fields = '__all__'
+        fields = '__all__'#['phone', 'name']
 
     def validate_phone(self, phone):
         if not phone:       # blank
@@ -59,3 +59,16 @@ def update_customer(request, pk):
         return Response(serializer.errors, status=400)
     serializer.save()
     return Response(serializer.data)
+
+#============= Product====================
+class ProductSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+# 127.0.0.1:8000/api/get-product-by-code/IPX
+@api_view(['GET'])
+def get_product_by_code(request, code):
+    product = Product.objects.get(code=code)
+    data = ProductSerializer(product).data
+    return Response(data)
