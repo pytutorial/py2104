@@ -12,3 +12,10 @@ class Customer(models.Model):
     
     # python manage.py makemigrations
     # python manage.py migrate
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.IntegerField()
+
+    def __str__(self):
+        return self.name
