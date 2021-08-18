@@ -92,4 +92,12 @@ def create_product(request):
 
 @api_view(['PUT'])
 def update_product(request, pk):
-    ...
+    product = Product.objects.get(pk=pk)
+    serializer = ProductSerializer(
+        data=request.data,
+        instance=product
+    )
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+    serializer.save()
+    return Response(serializer.data)
