@@ -76,7 +76,11 @@ def get_product_by_code(request, code):
 #127.0.0.1:8000/api/search-product?keyword=A
 @api_view(['GET'])
 def search_product(request):
-    ...
+    data = request.GET
+    keyword = data.get('keyword')
+    product_list = Product.objects.filter(name__icontains=keyword)
+    data = ProductSerializer(product_list, many=True).data
+    return Response(data)
 
 @api_view(['POST'])
 def create_product(request):
