@@ -20,6 +20,9 @@ class CustomerSerializer(ModelSerializer):
         if not phone.isdigit():
             raise ValidationError('Số điện thoại chỉ được chứa chữ số')
         
+        if len(phone) != 10 and len(phone) != 11:
+            raise ValidationError('Số điện thoại phải chỉ được phép có 10/11 chữ số')
+
         return phone  # do not forget 'return' !!
 
 @api_view(['GET'])
