@@ -9,7 +9,7 @@ class OrderSerializer(ModelSerializer):
         model = Order
         fields = '__all__'
 
-    customerName = 
+    customerName = CharField(read_only=True, source="customer.name")
 
 
 @api_view(['GET'])
