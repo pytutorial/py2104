@@ -10,7 +10,8 @@ class OrderSerializer(ModelSerializer):
         fields = '__all__'
 
     customerName = CharField(read_only=True, source="customer.name")
-
+    productName = CharField(read_only=True, source="product.name")
+    orderDate = DateTimeField(format='%d/%m/%Y %H:%M:%S')
 
 @api_view(['GET'])
 def hello(request):
