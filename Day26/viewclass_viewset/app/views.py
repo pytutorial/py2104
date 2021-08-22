@@ -4,6 +4,19 @@ from rest_framework.decorators import api_view
 from rest_framework.serializers import ModelSerializer, CharField, DateTimeField, SerializerMethodField
 from .models import *
 
+from rest_framework.views import APIView
+
+class HelloView(APIView):
+    def get(self, request):
+        data = request.GET
+        name = data.get('name', '')
+        return Response({'message': f'Hello {name}'})
+
+    def post(self, request):
+        data = request.data
+        name = data.get('name', '')
+        return Response({'message': f'Hello {name}'})
+
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
@@ -26,3 +39,4 @@ def list_order(request):
     order_list = Order.objects.all()
     data = OrderSerializer(order_list, many=True).data
     return Response(data)
+
