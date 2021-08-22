@@ -1,3 +1,4 @@
+from django.db.models import fields
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
 
@@ -7,6 +8,7 @@ from .models import *
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 
+#============================ Product ViewSet ====================================
 class ProductSerializer(ModelSerializer):
     class Meta:
         model = Product
@@ -28,6 +30,26 @@ class ProductViewSet(ModelViewSet):
     def get_price(self, request, pk):
         product = Product.objects.get(pk=pk)
         return Response({'price': product.price})
+
+# ======================== Customer ViewSet ====================================
+class CustomerSerializer(ModelSerializer):
+    class Meta:
+        model = ...
+        fields = ...
+
+class CustomerViewSet(ModelViewSet):
+    serializer_class = ...
+    queryset = ...
+
+    @action(methods=['get'], detail=...)
+    def search(self, request):
+        data = ...
+        keyword = ...
+        ...
+
+    @action(methods=['get'], detail=...)
+    def get_order_history(self, request, pk):
+        ...
 
 class HelloView(APIView):
     def get(self, request):

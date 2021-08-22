@@ -23,6 +23,7 @@ urlpatterns = [
     path('api/hello', hello),
     path('admin/', admin.site.urls),
 ]
+
 router = DefaultRouter()
 router.register('api/product', ProductViewSet)
 urlpatterns += router.urls
