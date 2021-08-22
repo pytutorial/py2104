@@ -1,13 +1,16 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, CharField, DateTimeField
 from .models import *
 
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
+
+    customerName = 
+
 
 @api_view(['GET'])
 def hello(request):
