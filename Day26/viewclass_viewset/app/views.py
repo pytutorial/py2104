@@ -40,15 +40,19 @@ class CustomerViewSet(ModelViewSet):
     serializer_class = CustomerSerializer
     queryset = Customer.objects.all()
 
-    @action(methods=['get'], detail=...)
+    @action(methods=['get'], detail=False)
     def search(self, request):
-        data = ...
-        keyword = ...
-        ...
+        data = request.GET
+        keyword = data.get('keyword', '')
+        customer_list = Customer.objects.filter(name__icontains=keyword)
+        data = CustomerSerializer(customer_list, many=True).data
+        return Response(data)
 
-    @action(methods=['get'], detail=...)
+    @action(methods=['get'], detail=True)
     def get_order_history(self, request, pk):
-        ...
+        order_list = Order.objects.filter(customer__pk=pk)
+        data = OrderSerializer(order_list, many=True).data
+        return Response(data)
 
 class HelloView(APIView):
     def get(self, request):
