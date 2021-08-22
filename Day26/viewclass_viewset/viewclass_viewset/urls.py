@@ -18,6 +18,7 @@ from django.urls import path
 from app.views import *
 
 urlpatterns = [
+    path('api/list-order', list_order),
     path('api/hello', hello),
     path('admin/', admin.site.urls),
 ]
