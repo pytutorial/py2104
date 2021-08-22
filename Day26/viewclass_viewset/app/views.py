@@ -1,3 +1,4 @@
+from django.db.models import fields
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
@@ -5,6 +6,16 @@ from rest_framework.serializers import ModelSerializer, CharField, DateTimeField
 from .models import *
 
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
+
+class ProductSerializer(ModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+class ProductViewSet(ModelViewSet):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
 
 class HelloView(APIView):
     def get(self, request):
