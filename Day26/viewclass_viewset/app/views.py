@@ -12,6 +12,10 @@ class OrderSerializer(ModelSerializer):
     customerName = CharField(read_only=True, source="customer.name")
     productName = CharField(read_only=True, source="product.name")
     orderDate = DateTimeField(format='%d/%m/%Y %H:%M:%S')
+    total = SerializerMethodField()
+
+    def get_total(self, obj:Order):
+        return obj.qty * obj.priceUnit
 
 @api_view(['GET'])
 def hello(request):
