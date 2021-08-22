@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from rest_framework.serializers import ModelSerializer, CharField, DateTimeField
+from rest_framework.serializers import ModelSerializer, CharField, DateTimeField, SerializerMethodField
 from .models import *
 
 class OrderSerializer(ModelSerializer):
