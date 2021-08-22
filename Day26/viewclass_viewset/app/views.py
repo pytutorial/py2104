@@ -24,6 +24,11 @@ class ProductViewSet(ModelViewSet):
         data = ProductSerializer(product_list, many=True).data
         return Response(data)
 
+    @action(methods=['get'], detail=True)
+    def get_price(self, request, pk):
+        product = Product.objects.get(pk=pk)
+        return Response({'price': product.price})
+
 class HelloView(APIView):
     def get(self, request):
         data = request.GET
