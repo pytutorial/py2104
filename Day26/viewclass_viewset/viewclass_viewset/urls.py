@@ -27,3 +27,7 @@ urlpatterns = [
 router = DefaultRouter()
 router.register('api/product', ProductViewSet)
 urlpatterns += router.urls
+
+router = DefaultRouter()
+router.register('api/customer', CustomerViewSet)
+urlpatterns += router.urls

@@ -1,4 +1,3 @@
-from django.db.models import fields
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
 
@@ -34,12 +33,12 @@ class ProductViewSet(ModelViewSet):
 # ======================== Customer ViewSet ====================================
 class CustomerSerializer(ModelSerializer):
     class Meta:
-        model = ...
-        fields = ...
+        model = Customer
+        fields = '__all__'
 
 class CustomerViewSet(ModelViewSet):
-    serializer_class = ...
-    queryset = ...
+    serializer_class = CustomerSerializer
+    queryset = Customer.objects.all()
 
     @action(methods=['get'], detail=...)
     def search(self, request):
