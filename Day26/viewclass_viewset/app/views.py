@@ -1,6 +1,5 @@
-from django.db.models import fields
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 
 from rest_framework.serializers import ModelSerializer, CharField, DateTimeField, SerializerMethodField
 from .models import *
@@ -16,6 +15,14 @@ class ProductSerializer(ModelSerializer):
 class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+    @action(methods=['get'], detail=False)
+    def search(self, request):
+        data = request.GET
+        keyword = data.get('keyword', '')
+        product_list = Product.objects.filter(name__icontains=keyword)
+        data = ProductSerializer(product_list, many=True).data
+        return Response(data)
 
 class HelloView(APIView):
     def get(self, request):
