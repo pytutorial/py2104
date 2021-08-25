@@ -50,7 +50,7 @@ class CustomerViewSet(ModelViewSet):
 
     @action(methods=['get'], detail=True)
     def get_order_history(self, request, pk):
-        order_list = Order.objects.filter(customer__pk=pk)
+        order_list = Order.objects.filter(customer__id=pk)
         data = OrderSerializer(order_list, many=True).data
         return Response(data)
 
