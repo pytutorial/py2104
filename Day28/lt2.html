@@ -1,0 +1,46 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .form-control {
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #AAA;
+      border-radius: 4px;
+    }
+    input.form-control {
+      height: 30px;
+    }
+    textarea.form-control {
+      height: 60px;
+    }
+    body{
+      margin-left: 10%;
+      margin-right: 30%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for="name">Tên:</label>
+    <input class="form-control" name='name'>
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for="desc">Mô tả:</label>
+    <textarea class="form-control" name='desc'></textarea>
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for="price">Đơn giá:</label>
+    <input class="form-control" name='price' min='0' type="number" step="1000">
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for="image">Ảnh:</label>
+    <input class="form-control" name='image' type='file'>
+  </div>
+</body>
+
+</html>
