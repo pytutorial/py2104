@@ -1,0 +1,52 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .container {
+      padding-left: 10%;
+      padding-right: 30%;
+      padding-top: 20px;
+    }
+    .form-control {
+      width: 100%;
+      height: 30px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border: 1px solid #AAA;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="container">
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for='fullname'>Họ và tên:</label>
+    <input class="form-control" name='fullname'>
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for='email'>Email:</label>
+    <input class="form-control" name='email'>
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for='phone'>Số điện thoại:</label>
+    <input class="form-control" name='phone'>
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for='birth_date'>Ngày sinh:</label>
+    <input class="form-control" name='birth_date'>
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for='gender'>Giới tính:</label>
+    <select class="form-control">
+      <option>------</option>
+      <option>Nam</option>
+      <option>Nữ</option>
+    </select>
+  </div>
+  <div>
+    <label style="display:inline-block; min-width: 100px;" for='image'>Ảnh đại diện:</label>
+    <input name='image' type='file'>
+  </div>
+</body>
+</html>
