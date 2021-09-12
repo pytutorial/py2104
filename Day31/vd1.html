@@ -2,9 +2,15 @@
     <head>
         <meta charset="utf-8">
         <script>
-            console.log(`{1}+{2}={1+2}`);
+            console.log(`${1}+${2}=${1+2}`);
+            function btnClick() {
+                var inp = document.getElementById('name');
+                alert('Xin chào ' + inp.value);
+            }
         </script>
     </head>
     <body>
+        Tên của bạn: <input id="name">
+        <button onclick="btnClick()">Ok</button>
     </body>
 </html>
