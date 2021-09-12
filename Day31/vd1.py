@@ -1,0 +1,7 @@
+def sum(x, y):
+    return x + y
+
+print(sum(2, 3))
+
+sum2 = lambda x,y : x+y
+print(sum2(2, 3))
