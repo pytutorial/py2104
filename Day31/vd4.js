@@ -16,4 +16,13 @@ var orderList = [
         qty: 1,
         priceUnit: 22.5
     }
-]
+];
+var total = 0;
+var n = orderList.length;
+for(var i = 0; i < n; i++) {
+    var o = orderList[i];
+    console.log(o.qty, o.priceUnit);
+    var subTotal = o.qty * o.priceUnit;
+    total += subTotal;
+}
+console.log(total);
