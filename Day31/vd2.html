@@ -16,7 +16,8 @@
                 }else {
                     result = 'Thân hình béo';
                 }
-                alert(result);
+                //alert(result);
+                document.getElementById('result').innerHTML = result;
             }
         </script>
     </head>
@@ -34,5 +35,6 @@
             </tbody>
         </table>
         <button onclick='checkBmi()'>Kiểm tra thân hình</button>
+        <span id='result'></span>
     </body>
 </html>
