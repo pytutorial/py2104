@@ -30,3 +30,8 @@ for(var i = 0; i < n; i++) {
         console.log(p.name);
     }
 }
+
+var result = productList
+                .filter(p => (p.price >= priceMin && p.price <= priceMax))
+                .map(p => p.name);
+console.log(result);
