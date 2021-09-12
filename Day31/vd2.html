@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            function checkBmi(){
+                var heightInput = document.getElementById('height');
+                var height = heightInput.value;
+                var weightInput = document.getElementById('weight');
+                var weight = weightInput.value;
+                var bmi = weight/(height*height);
+                var result = '';
+                if(bmi < 18.5) {
+                    result = 'Thân hình gầy';
+                }else if(bmi <= 25) {
+                    result = 'Thân hình bình thường';
+                }else {
+                    result = 'Thân hình béo';
+                }
+                alert(result);
+            }
+        </script>
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Chiều cao (mét):</th>
+                    <td><input id='height' type="number" min="0"></td>
+                </tr>
+                <tr>
+                    <th>Cân nặng (kg):</th>
+                    <td><input id='weight' type="number" min="0"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick='checkBmi()'>Kiểm tra thân hình</button>
+    </body>
+</html>
