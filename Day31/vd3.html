@@ -9,8 +9,8 @@
                 var qtyInput = document.getElementById('qty');
                 var qty = qtyInput.value;
                 console.log('qty=', qty);
-                // var total = ...;
-                // document.getElementById('total').innerHTML = ...;
+                var total = qty * priceUnit;
+                document.getElementById('total').innerHTML = total
             }
         </script>
     </head>
