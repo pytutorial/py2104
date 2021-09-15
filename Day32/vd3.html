@@ -30,7 +30,8 @@
         var url = 'http://api.openweathermap.org/data/2.5/forecast?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9&cnt=8';
         var response = await fetch(url);
         var result = await response.json();
-        console.log(result);
+        console.log(result.list);
+        document.getElementById('app').innerHTML = render(result.list);
     }
     getData();
 </script>
