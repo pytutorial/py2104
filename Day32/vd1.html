@@ -7,12 +7,19 @@
 <script>
     var url = 'http://api.openweathermap.org/data/2.5/weather?id=1581129&units=metric&appid=d6477696b63c2e661af64eead58c11d9';
     
+    function render(data) {
+        return `
+            <p>Nhiệt độ hiện tại: ${data.temp} độ C</p>
+            <p>Độ ẩm: ${data.humidity} %</p>
+            <p>Áp suất: ${data.pressure/1000} atm</p>
+        `
+    }
+
     async function getData() {
         var response = await fetch(url);
         var result = await response.json();
         console.log(result);
-        console.log('Nhiệt độ hiện tại:', result['main']['temp']);
-        document.getElementById('app').innerHTML = 'Nhiệt độ hiện tại:' + result['main']['temp'];
+        document.getElementById('app').innerHTML = render(result['main']);
     }
 
     getData();
