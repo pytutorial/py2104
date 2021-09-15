@@ -15,9 +15,10 @@
 </div>
 
 <script>
-    function btnClick() {
+    async function btnClick() {
         var sourceText = document.getElementById('source').value;
-        document.getElementById('dest').value = sourceText;
+        var destText = await translateText(sourceText);
+        document.getElementById('dest').value = destText;
     }
 
     async function translateText(text) {
@@ -31,8 +32,8 @@
         };
         var response = await fetch(url, {method:'POST', body: JSON.stringify(data)});
         var result = await response.json();
-        console.log(result);
-        return result;
+        console.log(result.data.translations[0].translatedText);
+        return result.data.translations[0].translatedText;
     }
     translateText('Hôm nay là thứ tư');
 </script>
