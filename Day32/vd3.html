@@ -6,7 +6,7 @@
     function renderRow(item) {
         return (`
             <tr>
-                <td>${item.dt_txt}</td>
+                <td class="text-center">${item.dt_txt}</td>
                 <td>${item.main.temp}</td>
                 <td>${item.main.pressure/1000}</td>
                 <td>${item.main.humidity}</td>
@@ -19,7 +19,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Thời gian</th>
+                        <th class="text-center">Thời gian</th>
                         <th>Nhiệt độ</th>
                         <th>Áp suất</th>
                         <th>Độ ẩm</th>
