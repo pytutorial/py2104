@@ -19,4 +19,20 @@
         var sourceText = document.getElementById('source').value;
         document.getElementById('dest').value = sourceText;
     }
+
+    async function translateText(text) {
+        var url = 'https://translation.googleapis.com/language/translate/v2?key=AIzaSyBR8gU4Te36NCYlc2ZdynsOWQOS03lzWKc';
+
+        var data = {
+            q: text,
+            source: 'vi',
+            target: 'en',
+            format: 'text'
+        };
+        var response = await fetch(url, {method:'POST', body: JSON.stringify(data)});
+        var result = await response.json();
+        console.log(result);
+        return result;
+    }
+    translateText('Hôm nay là thứ tư');
 </script>
