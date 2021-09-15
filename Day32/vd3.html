@@ -3,6 +3,17 @@
 <div id="app" class="container mt-3"></div>
 
 <script>
+    function renderRow(item) {
+        return (`
+            <tr>
+                <td>${item.dt_txt}</td>
+                <td>${item.main.temp}</td>
+                <td>${item.main.pressure/1000}</td>
+                <td>${item.main.humidity}</td>
+            </tr>
+        `)
+    }
+
     function render(data) {
         return (`
             <table class="table table-bordered">
@@ -15,12 +26,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>19:00:00</td>
-                        <td>27</td>
-                        <td>1.01</td>
-                        <td>94</td>
-                    </tr>
+                    ${renderRow(data[0])}
                 </tbody>
             </table>
         `)
