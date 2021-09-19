@@ -1,3 +1,10 @@
+from django.shortcuts import render
+
+def index(request):
+    context = {'name': 'Nguyen Van A'}
+    return render(request, 'index.html', context)
+
+# Service ============================================================================
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.serializers import ModelSerializer
