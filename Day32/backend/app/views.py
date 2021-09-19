@@ -14,3 +14,11 @@ def search_product(request):
     product_list = Product.objects.filter(name__icontains=keyword)
     data = ProductSerializer(product_list, many=True).data
     return Response(data)
+
+@api_view(['POST'])
+def create_product(request):
+    serializer = ProductSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+    serializer.save()
+    return Response(serializer.data)

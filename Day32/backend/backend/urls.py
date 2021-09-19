@@ -19,5 +19,6 @@ from app.views import *
 
 urlpatterns = [
     path('api/search-product', search_product),
+    path('api/create-product', create_product),
     path('admin/', admin.site.urls),
 ]
