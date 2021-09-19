@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+#127.0.0.1:8000?username=Nguyen+Van+A
 def index(request):
-    context = {'name': 'Nguyen Van A'}
-    return render(request, 'index.html', context)
+    data = request.GET # {'username': 'Nguyen Van A'}
+    name = data.get('username', '')
+    context = {'name': name}
+    return render(request, 'product_list.html', context)
 
 # Service ============================================================================
 from rest_framework.response import Response
