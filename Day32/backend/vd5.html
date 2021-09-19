@@ -32,7 +32,7 @@
     var url  = 'http://127.0.0.1:8000/api/create-product';
     var response = await fetch(url, {method: 'POST', body: data});
     if(response.ok) {
-      alert('Lưu sản phẩm thành công');
+      location.href = 'vd4.html'; //alert('Lưu sản phẩm thành công');
     }else {
       alert('Đã xảy ra lỗi');
     }
