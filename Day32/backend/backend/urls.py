@@ -19,6 +19,7 @@ from app.views import *
 
 urlpatterns = [
     path('', index),
+    path('list-product', list_product),
 
     path('api/search-product', search_product),
     path('api/create-product', create_product),
