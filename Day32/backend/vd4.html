@@ -1,12 +1,36 @@
 <meta charset="utf-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
 <div id="app"></div>
 
 <script>
+    function renderTable(rows) {
+        return (`
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Mã sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Giá sản phẩm</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>IPX</td>
+                        <td>IPhone X</td>
+                        <td>10500000đ</td>
+                    </tr>
+                </tobdy>
+            </table>
+        `)
+    }
     async function getData() {
         var url = 'http://127.0.0.1:8000/api/search-product';
         var response = await fetch(url);
         var result = await response.json();
         console.log(result);
+        document.getElementById('app').innerHTML = renderTable(result);
     }
     getData();
 </script>
