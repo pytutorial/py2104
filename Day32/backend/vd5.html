@@ -23,11 +23,18 @@
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-primary" onclick="saveProduct()">Lưu lại</button>
+    <button type="button" class="btn btn-primary" onclick="saveProduct()">Lưu lại</button>
   </form>
 </div>
 <script>
   async function saveProduct() {
-
+    var data = new FormData(document.getElementById('fmt'));
+    var url  = 'http://127.0.0.1:8000/api/create-product';
+    var response = await fetch(url, {method: 'POST', body: data});
+    if(response.ok) {
+      alert('Lưu sản phẩm thành công');
+    }else {
+      alert('Đã xảy ra lỗi');
+    }
   }
 </script>
