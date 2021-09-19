@@ -18,11 +18,13 @@
                 </tr>
             </thead>
             <tbody>
+                {% for p in product_list %}
                 <tr>
-                    <td>IPX</td>
-                    <td>IPhone X</td>
-                    <td>10500000 đ</td>
+                    <td>{{ p.code }}</td>
+                    <td>{{ p.name }}</td>
+                    <td>{{ p.price }} đ</td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
