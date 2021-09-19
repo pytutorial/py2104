@@ -16,6 +16,13 @@
 
     function renderTable(rows) {
         return (`
+            <input 
+                class="mb-3 form-control" 
+                id="keyword" 
+                onkeyup="search()" 
+                placeholder='Nhập tên sản phẩm để tìm'
+            />
+
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -38,5 +45,11 @@
         console.log(result);
         document.getElementById('app').innerHTML = renderTable(result);
     }
+
+    function search() {
+        var keyword = document.getElementById('keyword').value;
+        alert(keyword);
+    }
+
     getData();
 </script>
