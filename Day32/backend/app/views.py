@@ -14,7 +14,7 @@ def list_product(request):
     keyword = request.GET.get('keyword', '')
     product_list = Product.objects.filter(name__icontains=keyword)
     context = {'product_list': product_list}
-    return render(request, 'product_list.html')
+    return render(request, 'product_list.html', context)
 
 # Service ============================================================================
 from rest_framework.response import Response
