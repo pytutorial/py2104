@@ -7,9 +7,15 @@ def index(request):
     context = {'name': name}
     return render(request, 'product_list.html', context)
 
+#http://127.0.0.1:8000/list-product?keyword=IPhone
+from .models import Product
+
 def list_product(request):
+    keyword = request.GET.get('keyword', '')
+    product_list = Product.objects.filter(name__icontains=keyword)
+    context = {'product_list': product_list}
     return render(request, 'product_list.html')
-    
+
 # Service ============================================================================
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
