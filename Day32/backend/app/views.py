@@ -7,6 +7,7 @@ def index(request):
     context = {'name': name}
     return render(request, 'product_list.html', context)
 
+
 # Service ============================================================================
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
