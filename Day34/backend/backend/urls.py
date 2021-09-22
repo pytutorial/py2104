@@ -19,5 +19,6 @@ from app.views import *
 
 urlpatterns = [
     path('', index),
+    path('list-customer', list_customer),
     path('admin/', admin.site.urls),
 ]
