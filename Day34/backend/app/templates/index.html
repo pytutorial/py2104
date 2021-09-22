@@ -33,64 +33,17 @@
       </div>
       <div class="col-9">
         <div class="row">
-          <div class="col-4" style="padding-bottom: 50px;">
-            <a href='product_detail.html'>
-              <img width="100%" src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg'/>
-              <div style="position: absolute;bottom: 0;">
-                <p class="mb-1">Acer 001</p>
-                <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>6.500.000 ₫</b> </p>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-4" style="padding-bottom: 50px;">
-            <a href='product_detail.html'>
-              <img width="100%" src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg'/>
-              <div style="position: absolute;bottom: 0;">
-                <p class="mb-1">Acer 002</p>
-                <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>6.500.000 ₫</b> </p>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-4" style="padding-bottom: 50px;">
-            <a href='product_detail.html'>
-              <img width="100%" src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg'/>
-              <div style="position: absolute;bottom: 0;">
-                <p class="mb-1">Acer 003</p>
-                <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>6.500.000 ₫</b> </p>
-              </div>
-            </a>
-          </div>
-          <div class="col-4" style="padding-bottom: 50px;">
-            <a href='product_detail.html'>
-              <img width="100%" src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg'/>
-              <div style="position: absolute;bottom: 0;">
-                <p class="mb-1">Acer 004</p>
-                <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>6.500.000 ₫</b> </p>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-4" style="padding-bottom: 50px;">
-            <a href='product_detail.html'>
-              <img width="100%" src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg'/>
-              <div style="position: absolute;bottom: 0;">
-                <p class="mb-1">Acer 005</p>
-                <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>6.500.000 ₫</b> </p>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-4" style="padding-bottom: 50px;">
-            <a href='product_detail.html'>
-              <img width="100%" src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg'/>
-              <div style="position: absolute;bottom: 0;">
-                <p class="mb-1">Acer 006</p>
-                <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>6.500.000 ₫</b> </p>
-              </div>
-            </a>
-          </div>
+          {% for product in product_list %}
+            <div class="col-4" style="padding-bottom: 50px;">
+              <a href='product_detail.html'>
+                <img width="100%" src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg'/>
+                <div style="position: absolute;bottom: 0;">
+                  <p class="mb-1">Acer 001</p>
+                  <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>6.500.000 ₫</b> </p>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>

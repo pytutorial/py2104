@@ -3,7 +3,9 @@ from .models import Customer, Product
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    product_list = Product.objects.all()
+    context = {'product_list': product_list}
+    return render(request, 'index.html', context)
 
 #127.0.0.1:8000/list-customer
 def list_customer(request):
