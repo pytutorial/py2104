@@ -20,5 +20,6 @@ from app.views import *
 urlpatterns = [
     path('', index),
     path('list-customer', list_customer),
+    path('view-product/<pk>', view_product),
     path('admin/', admin.site.urls),
 ]
