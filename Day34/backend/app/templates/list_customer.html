@@ -1,5 +1,10 @@
 <meta charset="utf-8">
 <h3>Danh sách khách hàng</h3>
+<ul>
+    {% for customer in customer_list %}
+        <li>{{customer.name}}</li>
+    {% endfor %}
+</ul>
 <table>
     <!--TODO-->
 </table>
