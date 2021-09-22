@@ -11,19 +11,19 @@
     <div class="row">
       <div class="col-6">
         <img width="100%"
-          src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg' />
+          src='{{product.image.url}}' />
       </div>
       <div class="col-6 pt-5">
-        <h4>Acer 001</h4>
+        <h4>{{product.name}}</h4>
         <table class="table">
           <tbody>
             <tr>
               <th>Hãng sản xuất:</th>
-              <td>Acer</td>
+              <td>{{product.category}}</td>
             </tr>
             <tr>
               <th>Giá bán:</th>
-              <td>6.500.000 ₫</td>
+              <td>{{product.price}} ₫</td>
             </tr>
           </tbody>
         </table>
