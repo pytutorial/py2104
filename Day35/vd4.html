@@ -14,13 +14,18 @@
             </tr>
         </tbody>
     </table>
-    <button @click="total=price*qty">Tính tiền</button>
+    <button @click="calcTotal()">Tính tiền</button>
     <label v-if="total">Số tiền : {{total}}</label>
 </div>
 
 <script>
     new Vue({
         el:'#app',
+        methods: {
+           calcTotal: function(){
+               total = qty * price;
+           } 
+        },
         data: {price: null, qty: null, total: null}
     })
 </script>
