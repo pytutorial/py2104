@@ -6,15 +6,16 @@
         <tbody>
             <tr>
                 <th>Đơn giá:</th>
-                <td><input min="0" type="number"/></td>
+                <td><input v-model="price" min="0" type="number"/></td>
             </tr>
             <tr>
                 <th>Số lượng:</th>
-                <td><input min="0" type="number"/></td>
+                <td><input v-model="qty" min="0" type="number"/></td>
             </tr>
         </tbody>
     </table>
     <button>Tính tiền</button>
+    <label>Số tiền : {{total}}</label>
 </div>
 
 <script>
