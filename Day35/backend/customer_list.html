@@ -30,7 +30,10 @@
             customerList : []
         },
         mounted: async function() {
-            
+            var response = await fetch('http://127.0.0.1:8000/api/get-customer-list');
+            var result = await response.json();
+            console.log(result);
+            this.customerList = result;
         }
     })
 </script>
