@@ -3,14 +3,23 @@
 
 <div id="app">
     <p>Tên của bạn: <input v-model="name"></p>
+    <p>Giới tính:
+        <select v-model="gender">
+            <option value="">--------</option>
+            <option value="M">Nam</option>
+            <option value="F">Nữ</option>
+        </select>
+    </p>
     <p>Xin chào {{name}}</p>
+    <p>Giới tính : {{gender}} </p>
 </div>
 
 <script>
     new Vue({
         el: '#app',
         data: {
-            name: ''
+            name: '',
+            gender: ''
         }
     })
 </script>
