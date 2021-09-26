@@ -3,11 +3,27 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
 <div id="app" class="container mt-3">
-
+    <table class="table table-bordered">
+        <thead>
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+        </thead>
+    </table>
 </div>
 
 <script>
     new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            productList: [
+                {id: 1, name: 'Thẻ nhớ SamSung 4GB', price: 32000},
+                {id: 2, name: 'Đầu đọc thẻ nhớ', price: 8000},
+            ]
+        },
     })
 </script>
