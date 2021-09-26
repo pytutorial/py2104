@@ -10,7 +10,7 @@ class CustomerSerializer(ModelSerializer):
         fields = '__all__'
 
 @api_view(['GET'])
-def get_customer_list():
+def get_customer_list(request):
     customer_list = Customer.objects.all()
     data = CustomerSerializer(customer_list, many=True).data
     return Response(data)
