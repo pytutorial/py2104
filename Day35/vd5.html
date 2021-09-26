@@ -17,7 +17,7 @@
             <tr v-for="(product, index) in productList">
                 <td>{{index+1}}. {{product.name}}</td>
                 <td> <input v-model="qtyList[index]" class="form-control" type="number" min="1"> </td>
-                <td> {{ product.price *  qtyList[index] }}</td>
+                <td> {{ product.price *  qtyList[index] }} đ</td>
             </tr>
         </tbody>
     </table>
