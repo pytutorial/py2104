@@ -14,7 +14,7 @@
             </thead>
         </thead>
         <tbody>
-            <tr v-for="product in productList">
+            <tr v-for="(product, index) in productList">
                 <td>{{product.name}}</td>
                 <td> <input class="form-control" type="number" min="1"> </td>
                 <td></td>
