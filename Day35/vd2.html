@@ -10,8 +10,10 @@
             <option value="F">Nữ</option>
         </select>
     </p>
-    <p>Xin chào {{name}}</p>
-    <p>Giới tính : {{gender}} </p>
+    <p v-if=" gender=='M' ">Xin chào anh {{name}}</p>
+    <p v-else-if=" gender=='F' ">Xin chào chị {{name}}</p>
+    <p v-else>Xin chào {{name}}</p>
+    <!--<p>Giới tính : {{gender}} </p>-->
 </div>
 
 <script>
