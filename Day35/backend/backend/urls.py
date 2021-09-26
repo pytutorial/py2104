@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app.views import *
+from app.views_api import *
 
 urlpatterns = [
+    path('api/get-customer-list', get_customer_list),
     path('', index),
     path('list-customer', list_customer),
     path('view-product/<pk>', view_product),
