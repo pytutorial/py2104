@@ -1,0 +1,16 @@
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <p>Tên của bạn: <input v-model="name"></p>
+    <p>Xin chào {{name}}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            name: ''
+        }
+    })
+</script>
