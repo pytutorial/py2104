@@ -23,7 +23,7 @@
         el:'#app',
         methods: {
            calcTotal: function(){
-               total = qty * price;
+               this.total = this.qty * this.price;
            } 
         },
         data: {price: null, qty: null, total: null}
