@@ -5,7 +5,18 @@
 <div id="app" class="container mt-3">
     <h3>Danh sách khách hàng</h3>
     <table class="table table-bordered">
-        <!--TODO-->
+        <thead>
+            <tr>
+                <th>Họ và tên</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
+            </tr>
+            <tr v-for="customer in customerList">
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.phone  }}</td>
+                <td>{{ customer.address }}</td>
+            </tr>
+        </thead>
     </table>
     <!--<ul>
         <li v-for="customer in customerList">{{customer.name}}</li>
