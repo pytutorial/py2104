@@ -15,7 +15,7 @@
         </tbody>
     </table>
     <button @click="total=price*qty">Tính tiền</button>
-    <label>Số tiền : {{total}}</label>
+    <label v-if="total">Số tiền : {{total}}</label>
 </div>
 
 <script>
