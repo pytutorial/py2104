@@ -6,10 +6,10 @@
     <h3>Danh sách khách hàng</h3>
     <div class="row">
         <div class="col-9">
-            <input class="form-control" placeholder="Nhập tên khách hàng để tìm">
+            <input v-model="name" class="form-control" placeholder="Nhập tên khách hàng để tìm">
         </div>
         <div class="col-3">
-            <button class="btn btn-primary">Tìm kiếm</button>
+            <button @click="search()" class="btn btn-primary">Tìm kiếm</button>
         </div>
     </div>
     <table class="mt-3 table table-bordered">
@@ -35,7 +35,13 @@
     new Vue({
         el: '#app',
         data: {
-            customerList : []
+            customerList : [],
+            name: '',
+        },
+        methods: {
+            search: function() {
+                alert(this.name);
+            }
         },
         mounted: async function() {
             var response = await fetch('http://127.0.0.1:8000/api/get-customer-list');
