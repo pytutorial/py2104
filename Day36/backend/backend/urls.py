@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from app.views import *
 from app.views_api import *
-
+from rest_framework.routers import DefaultRouter
 urlpatterns = [
     path('api/get-customer-list', get_customer_list),
     path('', index),
@@ -25,3 +25,6 @@ urlpatterns = [
     path('view-product/<pk>', view_product),
     path('admin/', admin.site.urls),
 ]
+routers = DefaultRouter()
+routers.register('api/product', ProductViewSet)
+urlpatterns += routers.urls
