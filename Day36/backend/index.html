@@ -53,7 +53,11 @@
       el: '#app',
       data: {productList:[]},
       mounted: async function() {
-        //TODO
+        var url = 'http://127.0.0.1:8000/api/product/';
+        var resp = await fetch(url);
+        var result = await resp.json();
+        console.log(result);
+        this.productList = result;
       }
     })
   </script>
