@@ -12,7 +12,8 @@ class CustomerSerializer(ModelSerializer):
 
 @api_view(['GET'])
 def get_customer_list(request):
-    customer_list = Customer.objects.all()
+    name = request.GET.get('name', '')
+    customer_list = Customer.objects.filter(name__icontains=name)
     data = CustomerSerializer(customer_list, many=True).data
     return Response(data)
 
