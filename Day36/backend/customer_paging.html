@@ -4,14 +4,6 @@
 
 <div id="app" class="container mt-3">
     <h3>Danh sách khách hàng</h3>
-    <div class="row">
-        <div class="col-9">
-            <input v-model="name" class="form-control" placeholder="Nhập tên khách hàng để tìm">
-        </div>
-        <div class="col-3">
-            <button @click="search()" class="btn btn-primary">Tìm kiếm</button>
-        </div>
-    </div>
     <table class="mt-3 table table-bordered">
         <thead>
             <tr>
@@ -58,10 +50,6 @@
                 var start = (page-1)*this.pageSize;
                 this.customerList = this.allCustomerList.slice(start, start+this.pageSize);
             },
-            search: function() {
-                //alert(this.name);
-                this.customerList = this.allCustomerList.filter(c => c.name.includes(this.name));
-            }
         },
         mounted: function() {
             for(var i = 0; i < 100; i++) {
