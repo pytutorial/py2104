@@ -1,6 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, CharField
 
 from rest_framework.viewsets import ModelViewSet
 from .models import Customer, Product
@@ -20,6 +20,8 @@ class ProductSerializer(ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
+
+    category_name = CharField(read_only=True, source='category.name')
 
 class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
