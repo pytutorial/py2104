@@ -39,7 +39,7 @@
         <div class="row">
           <div v-for="product in productList" class="col-4" style="padding-bottom: 50px;">
             <a :href="'product_detail.html?id=' + product.id">
-              <img width="100%" :src='product.image'/>
+              <img width="100%" :src='getImageUrl(product)'/>
               <div style="position: absolute;bottom: 0;">
                 <p class="mb-1">{{product.name}}</p>
                 <p class="mb-1"><i style="font-size: 14px;">Giá bán :</i> <b>{{product.price}} ₫</b> </p>
@@ -56,12 +56,17 @@
       data: {
         productList:[],
         name: '',
-        categoryId: ''
+        categoryId: '',
+        serverUrl: 'http://127.0.0.1:8000'
       },
 
       methods: {
+        getImageUrl: function(product){
+          return this.serverUrl + product.image;
+        },
+
         search: async function() {
-          var url = 'http://127.0.0.1:8000/api/get-product-list?name='+this.name;
+          var url = this.serverUrl + '/api/get-product-list?name='+this.name;
           var resp = await fetch(url);
           var result = await resp.json();
           console.log(result);
