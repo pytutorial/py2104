@@ -27,12 +27,11 @@
         </thead>
     </table>
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </ul>
+    {{pages}}
 </div>
 
 <script>
@@ -42,6 +41,15 @@
             allCustomerList:[],
             customerList : [],
             name: '',
+            pageSize: 10
+        },
+        computed: {
+            numPage: function() { return Math.ceil(this.allCustomerList.length/this.pageSize); },
+            pages: function() {
+                var lst = [];
+                for(var i = 1; i <= this.numPage; i++) lst.push(i);
+                return lst;
+            }
         },
         methods: {
             search: function() {
