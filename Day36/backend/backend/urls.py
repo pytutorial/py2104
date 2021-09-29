@@ -19,6 +19,7 @@ from app.views import *
 from app.views_api import *
 from rest_framework.routers import DefaultRouter
 urlpatterns = [
+    path('api/get-product-list', get_product_list),
     path('api/get-customer-list', get_customer_list),
     path('', index),
     path('list-customer', list_customer),

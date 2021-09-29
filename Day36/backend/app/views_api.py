@@ -17,6 +17,13 @@ def get_customer_list(request):
     data = CustomerSerializer(customer_list, many=True).data
     return Response(data)
 
+@api_view(['GET'])
+def get_product_list(request):
+    name = request.GET.get('name', '')
+    product_list = Product.objects.filter(name__icontains=name)
+    data = ProductSerializer(product_list, many=True).data
+    return Response(data)
+
 class ProductSerializer(ModelSerializer):
     class Meta:
         model = Product
