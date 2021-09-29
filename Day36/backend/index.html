@@ -59,12 +59,18 @@
         categoryId: ''
       },
 
+      methods: {
+        search: async function() {
+          var url = 'http://127.0.0.1:8000/api/get-product-list?name='+this.name;
+          var resp = await fetch(url);
+          var result = await resp.json();
+          console.log(result);
+          this.productList = result;
+        }
+      },
+
       mounted: async function() {
-        var url = 'http://127.0.0.1:8000/api/product/';
-        var resp = await fetch(url);
-        var result = await resp.json();
-        console.log(result);
-        this.productList = result;
+        this.search();
       }
     })
   </script>
