@@ -26,18 +26,19 @@
             </tr>
         </thead>
     </table>
+    {{currentPage}}
     <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li v-for="page in pages" class="page-item" :class="{active: page==5}">
+            <a @click="currentPage=page" class="page-link" href="#">{{page}}</a>
+        </li>
     </ul>
-    {{pages}}
 </div>
 
 <script>
     new Vue({
         el: '#app',
         data: {
+            currentPage: 1,
             allCustomerList:[],
             customerList : [],
             name: '',
