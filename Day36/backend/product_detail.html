@@ -12,8 +12,7 @@
   <div id="app" class="container mt-5">
     <div class="row">
       <div class="col-6">
-        <img width="100%"
-          src='https://raw.githubusercontent.com/pytutorial/themes/master/shop_themes/images/sample.jpg' />
+        <img width="100%" :src='product.image' />
       </div>
       <div class="col-6 pt-5">
         <h4>{{product.name}}</h4>
@@ -39,11 +38,12 @@
     new Vue({
       el: '#app',
       data: {
-        product:{
-          name: 'Ten SP',
-          category_name: 'Hang SX',
-          price: 10000000
-        }
+        product: {}
+      },
+      mounted: async function() {
+        var url = 'http://127.0.0.1:8000/api/product/1';
+        var resp = await fetch(url);
+        this.product = await resp.json();
       }
     })
   </script>
