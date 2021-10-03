@@ -5,19 +5,22 @@ from rest_framework.serializers import ModelSerializer, CharField
 from rest_framework.viewsets import ModelViewSet
 from .models import Customer, Product
 
-PAGE_SIZE = 2
-
 class CustomerSerializer(ModelSerializer):
     class Meta:
         model = Customer
         fields = '__all__'
 
+PAGE_SIZE = 10
+
 @api_view(['GET'])
 def get_customer_list(request):
     name = request.GET.get('name', '')
     customer_list = Customer.objects.filter(name__icontains=name)
+    total = customer_list.count()
+    page = int(request.GET.get('page') or 1)
+    customer_list = customer_list[(page-1)*PAGE_SIZE:page*PAGE_SIZE]
     data = CustomerSerializer(customer_list, many=True).data
-    return Response(data)
+    return Response({'total': total, 'data': data})
 
 @api_view(['GET'])
 def get_product_list(request):
