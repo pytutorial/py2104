@@ -32,7 +32,14 @@
     },
     methods: {
       saveCustomer: async function(){
-        alert('save');
+        var data = new FormData(document.getElementById('fmt'));
+        var resp = await fetch('http:/127.0.0.1:8000/api/create-customer', {method:'POST', body:data});
+        if(resp.ok){
+          location.href = 'customer_paging_server.html';
+        }else{
+          var errors = await resp.json();
+          console.log('errors=', errors);
+        }
       }
     }
   })
