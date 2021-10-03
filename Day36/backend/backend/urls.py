@@ -23,7 +23,7 @@ urlpatterns = [
     path('api/get-customer-list', get_customer_list),
     path('', index),
     path('list-customer', list_customer),
-    path('create-customer', create_customer),
+    path('api/create-customer', create_customer),
     path('view-product/<pk>', view_product),
     path('admin/', admin.site.urls),
 ]
