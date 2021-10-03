@@ -29,12 +29,11 @@
     <!--<ul>
         <li v-for="customer in customerList">{{customer.name}}</li>
     </ul>-->
-    <b-table
-      :items="allCustomerList"
+    <b-pagination
+      v-model="currentPage"
+      :total-rows="100"
       :per-page="10"
-      :current-page="1"
-      small
-    ></b-table>
+    ></b-pagination>
 </div>
 
 <script>
