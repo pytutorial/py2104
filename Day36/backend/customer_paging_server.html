@@ -62,7 +62,8 @@
                         +this.name + "&page=" + this.currentPage);
                 var result = await response.json();
                 console.log(result);
-                this.customerList = this.allCustomerList = result;
+                this.customerList = result.data;
+                this.totalRow = result.total;
             }
         },
         mounted: async function() {
