@@ -29,6 +29,12 @@
     <!--<ul>
         <li v-for="customer in customerList">{{customer.name}}</li>
     </ul>-->
+    <b-table
+      :items="allCustomerList"
+      :per-page="10"
+      :current-page="1"
+      small
+    ></b-table>
 </div>
 
 <script>
