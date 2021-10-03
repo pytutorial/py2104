@@ -9,11 +9,17 @@
       <tbody>
         <tr>
           <th>Tên khách hàng:</th>
-          <td><input class="form-control" name="name"/></td>
+          <td>
+            <input class="form-control" name="name"/>
+            <span v-if="errors.name" style="color:red">{{errors.name[0]}}</span>
+          </td>
         </tr>
         <tr>
           <th>Số điện thoại:</th>
-          <td><input class="form-control" name="phone"/></td>
+          <td>
+            <input class="form-control" name="phone"/>
+            <span v-if="errors.phone" style="color:red">{{errors.phone[0]}}</span>
+          </td>
         </tr>
         <tr>
           <th>Địa chỉ:</th>
