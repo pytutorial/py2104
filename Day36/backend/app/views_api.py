@@ -10,7 +10,7 @@ class CustomerSerializer(ModelSerializer):
         model = Customer
         fields = '__all__'
 
-PAGE_SIZE = 10
+PAGE_SIZE = 2
 
 @api_view(['GET'])
 def get_customer_list(request):
