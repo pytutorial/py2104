@@ -1,9 +1,36 @@
+from datetime import datetime
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.serializers import ModelSerializer, CharField
 
 from rest_framework.viewsets import ModelViewSet
 from .models import Customer, Product
+from .models import Order
+
+class OrderSerializer(ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['customer_phone', 'customer_name', 'customer_address', 'qty']
+
+@api_view(['POST'])
+def order_product(request, pk):
+    product = Product.objects.get(pk=pk)
+    serializer = OrderSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+    
+    order = Order()
+    order.customer_phone = request.data['customer_phone']
+    order.customer_name = request.data['customer_name']
+    order.customer_address = request.data['customer_address']
+    order.qty = request.data['qty']
+    order.product = product
+    order.price_unit = product.price
+    order.order_date = datetime.now()
+    order.status = Order.Status.PENDING
+    order.save()
+
+    return Response({'success': True})
 
 class CustomerSerializer(ModelSerializer):
     class Meta:
