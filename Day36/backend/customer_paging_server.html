@@ -48,7 +48,8 @@
         },
         methods: {
             search: async function() {
-                var response = await fetch('http://127.0.0.1:8000/api/get-customer-list?name='+this.name);
+                var response = await fetch('http://127.0.0.1:8000/api/get-customer-list?name='
+                        +this.name + "&page=" + this.currentPage);
                 var result = await response.json();
                 console.log(result);
                 this.customerList = this.allCustomerList = result;
