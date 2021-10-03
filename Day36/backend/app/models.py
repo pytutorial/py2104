@@ -25,3 +25,19 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class Order(models.Model):
+    class Status:
+        PENDING = 0
+        DELIVERED = 1
+        CANCELED = 2
+        
+    customer_phone = models.CharField(max_length=20, unique=True)
+    customer_name = models.CharField(max_length=100)
+    customer_address = models.CharField(max_length=200)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    price_unit = models.IntegerField()
+    qty = models.IntegerField()
+    order_date = models.DateTimeField()
+    deliver_date = models.DateTimeField(null=True, blank=True)
+    status = models.IntegerField()
