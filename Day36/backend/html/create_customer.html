@@ -28,7 +28,7 @@
   new Vue({
     el: "#app",
     data: {
-
+      errors: {}
     },
     methods: {
       saveCustomer: async function(){
@@ -37,8 +37,8 @@
         if(resp.ok){
           location.href = 'customer_paging_server.html';
         }else{
-          var errors = await resp.json();
-          console.log('errors=', errors);
+          this.errors = await resp.json();
+          console.log('errors=', this.errors);
         }
       }
     }
