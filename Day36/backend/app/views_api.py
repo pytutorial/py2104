@@ -10,6 +10,15 @@ class CustomerSerializer(ModelSerializer):
         model = Customer
         fields = '__all__'
 
+@api_view(['POST'])
+def create_customer(request):
+    serializer = CustomerSerializer(data=request.data)
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=400)
+    else:
+        serializer.save()
+        return Response({'success': True})
+
 PAGE_SIZE = 2
 
 @api_view(['GET'])
