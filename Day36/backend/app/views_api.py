@@ -5,6 +5,8 @@ from rest_framework.serializers import ModelSerializer, CharField
 from rest_framework.viewsets import ModelViewSet
 from .models import Customer, Product
 
+PAGE_SIZE = 2
+
 class CustomerSerializer(ModelSerializer):
     class Meta:
         model = Customer
@@ -12,10 +14,14 @@ class CustomerSerializer(ModelSerializer):
 
 @api_view(['GET'])
 def get_customer_list(request):
+    start = int(request.GET.get('start') or 0)
+    count = int(request.GET.get('count') or PAGE_SIZE)
     name = request.GET.get('name', '')
     customer_list = Customer.objects.filter(name__icontains=name)
-    data = CustomerSerializer(customer_list, many=True).data
-    return Response(data)
+    total = customer_list.count()
+    items = customer_list[start:start+count]
+    data = CustomerSerializer(items, many=True).data
+    return Response({'items': data, 'total': total})
 
 @api_view(['GET'])
 def get_product_list(request):
