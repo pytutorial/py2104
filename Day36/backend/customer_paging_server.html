@@ -31,7 +31,7 @@
     </ul>-->
     <b-pagination
       v-model="currentPage"
-      :total-rows="100"
+      :total-rows="totalRow"
       :per-page="10"
     ></b-pagination>
     {{currentPage}}
@@ -41,6 +41,7 @@
     new Vue({
         el: '#app',
         data: {
+            totalRow: 0,
             currentPage:1,
             allCustomerList:[],
             customerList : [],
