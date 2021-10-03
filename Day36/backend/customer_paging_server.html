@@ -34,12 +34,14 @@
       :total-rows="100"
       :per-page="10"
     ></b-pagination>
+    {{currentPage}}
 </div>
 
 <script>
     new Vue({
         el: '#app',
         data: {
+            currentPage:1,
             allCustomerList:[],
             customerList : [],
             name: '',
