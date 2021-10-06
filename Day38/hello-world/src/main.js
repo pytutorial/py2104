@@ -4,9 +4,9 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
-const Page1 = {template: `<h3>Trang chủ</h3>`};
-const Page2 = {template: `<h3>Trang 2</h3>`};
-const Page3 = {template: `<h3>Trang 3</h3>`};
+import Page1 from "./pages/Page1"
+import Page2 from "./pages/Page2"
+import Page3 from "./pages/Page3"
 
 Vue.use(VueRouter);
 const routes = [
