@@ -29,6 +29,8 @@
             <td>
               <input name="qty"
                 class="form-control" style="width: 50px;" type="number" min="1" value="1">
+              
+              <span v-if="errors.qty" style="color:red">{{errors.qty[0]}}</span>
             </td>
           </tr>
   
@@ -38,6 +40,7 @@
             <th>Họ và tên:</th>
             <td>
               <input name="customer_name" class="form-control">
+              <span v-if="errors.customer_name" style="color:red">{{errors.customer_name[0]}}</span>
             </td>
           </tr>
   
@@ -45,6 +48,7 @@
             <th>Điện thoại:</th>
             <td>
               <input name="customer_phone" class="form-control">
+              <span v-if="errors.customer_phone" style="color:red">{{errors.customer_phone[0]}}</span>
             </td>
           </tr>
   
@@ -52,6 +56,7 @@
             <th>Địa chỉ:</th>
             <td>
               <input name="cusomter_address" class="form-control">
+              <span v-if="errors.cusomter_address" style="color:red">{{errors.cusomter_address[0]}}</span>
             </td>
           </tr>
           
@@ -65,11 +70,20 @@
       el: "#app",
       data: {
         id: null,
-        product:{}
+        product:{},
+        errors: {}
       },
       methods: {
         orderProduct: async function(){
-          alert('save');
+          //alert('save');
+          var data = new FormData(document.getElementById('fmt'));
+          var url = 'http://127.0.0.1:8000/api/order-product/'+this.id;
+          var resp = await fetch(url, {method: 'POST', body: data});
+          if(resp.ok) {
+            location.href = 'thank_you.html';
+          }else{
+            this.errors = await resp.json();
+          }
         }
       },
       mounted: async function() {
