@@ -10,52 +10,55 @@
 <body>
   <div id="app" class="container mt-3">
     <h3>Đặt mua hàng trực tuyến</h3>
-    <table class="table">
-      <tbody>
-        <tr><th colspan="2"><h4>Thông tin sản phẩm</h4></th></tr>
-        <tr>
-          <th>Tên sản phẩm:</th>
-          <td>{{product.name}}</td>
-        </tr>
-
-        <tr>
-          <th>Đơn giá:</th>
-          <td>{{product.price}} đ</td>
-        </tr>
-
-        <tr>
-          <th>Số lượng:</th>
-          <td>
-            <input class="form-control" style="width: 50px;" type="number" min="1" value="1">
-          </td>
-        </tr>
-
-        <tr><th colspan="2"><h4>Thông tin người mua hàng</h4></th></tr>
-
-        <tr>
-          <th>Họ và tên:</th>
-          <td>
-            <input class="form-control">
-          </td>
-        </tr>
-
-        <tr>
-          <th>Điện thoại:</th>
-          <td>
-            <input class="form-control">
-          </td>
-        </tr>
-
-        <tr>
-          <th>Địa chỉ:</th>
-          <td>
-            <input class="form-control">
-          </td>
-        </tr>
-        
-      </tbody>
-    </table>
-    <a href='#' class="btn btn-primary">Đặt mua</a>
+    <form id="fmt" @submit.prevent="orderProduct()">
+      <table class="table">
+        <tbody>
+          <tr><th colspan="2"><h4>Thông tin sản phẩm</h4></th></tr>
+          <tr>
+            <th>Tên sản phẩm:</th>
+            <td>{{product.name}}</td>
+          </tr>
+  
+          <tr>
+            <th>Đơn giá:</th>
+            <td>{{product.price}} đ</td>
+          </tr>
+  
+          <tr>
+            <th>Số lượng:</th>
+            <td>
+              <input name="qty"
+                class="form-control" style="width: 50px;" type="number" min="1" value="1">
+            </td>
+          </tr>
+  
+          <tr><th colspan="2"><h4>Thông tin người mua hàng</h4></th></tr>
+  
+          <tr>
+            <th>Họ và tên:</th>
+            <td>
+              <input name="customer_name" class="form-control">
+            </td>
+          </tr>
+  
+          <tr>
+            <th>Điện thoại:</th>
+            <td>
+              <input name="customer_phone" class="form-control">
+            </td>
+          </tr>
+  
+          <tr>
+            <th>Địa chỉ:</th>
+            <td>
+              <input name="cusomter_address" class="form-control">
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary">Đặt mua</button>  
+    </form>
   </div>
   <script>
     new Vue({
@@ -65,7 +68,9 @@
         product:{}
       },
       methods: {
-
+        orderProduct: async function(){
+          alert('save');
+        }
       },
       mounted: async function() {
         var href = window.location.toString();
