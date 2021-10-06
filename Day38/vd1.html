@@ -2,21 +2,31 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
-<body id="app">
+<div id="app">
     <div id="menu">
-        <a href='index.html'>Trang chủ</a>
-        <a href='about.html'>Giới thiệu</a>
-        <a href='contact.html'>Liên hệ</a>
+        <router-link to='/'>Trang chủ</router-link>
+        <router-link to='/about'>Giới thiệu</router-link>
+        <router-link to='/contact'>Liên hệ</router-link>
     </div>
     <div id="content"> 
-        <h3>Trang chủ</h3>
+        <router-view></router-view>
     </div>
     <div id="footer">
         Bản quyền thuộc về @abcxyz
     </div>
-</body>
+</div>
 <script>
+    const Home = {template: `<h3>Trang chủ</h3>`};
+    const About = {template: `<h3>Giới thiệu</h3>`};
+    const Contact = {template: `<h3>Liên hệ</h3>`};
+    Vue.use(VueRouter);
+    const routes = [
+        {path: '/', component: Home},
+        {path: '/about', component: About},
+        {path: '/contact', component: Contact}
+    ];
     new Vue({
         el: '#app',
+        router: new VueRouter({routes})
     })
 </script>
