@@ -34,7 +34,6 @@ export default {
   },
   mounted: async function() {
     var id = this.$route.params.id;
-    alert(id);
     var url = 'http://127.0.0.1:8000/api/product/'+id;
     var resp = await fetch(url);
     this.product = await resp.json();
