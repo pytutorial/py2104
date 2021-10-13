@@ -75,7 +75,7 @@
             class="col-4"
             style="padding-bottom: 50px"
           >
-            <a :href="'product_detail.html?id=' + product.id">
+            <router-link :to="'/view-product/' + product.id">
               <img width="100%" :src="getImageUrl(product)" />
               <div style="position: absolute; bottom: 0">
                 <p class="mb-1">{{ product.name }}</p>
@@ -84,7 +84,7 @@
                   <b>{{ product.price }} ₫</b>
                 </p>
               </div>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
