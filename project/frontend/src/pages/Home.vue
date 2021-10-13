@@ -70,6 +70,7 @@
       <div class="col-9">
         <div class="row">
           <div
+            :key="product.id"
             v-for="product in productList"
             class="col-4"
             style="padding-bottom: 50px"
