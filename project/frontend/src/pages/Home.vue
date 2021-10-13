@@ -80,7 +80,7 @@
               <div style="position: absolute; bottom: 0">
                 <p class="mb-1">{{ product.name }}</p>
                 <p class="mb-1">
-                  <i style="font-size: 14px">Giá bán :</i>
+                  <i class='product-price'>Giá bán :</i>
                   <b>{{ product.price }} ₫</b>
                 </p>
               </div>
@@ -91,6 +91,12 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+  .product-price {
+    font-size: 14px;
+  }
+</style>
 
 <script> 
   export default {
