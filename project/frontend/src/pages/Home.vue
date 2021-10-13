@@ -115,7 +115,7 @@
         return this.serverUrl + product.image;
       },
 
-      getCategoryList: function() {
+      getCategoryList: async function() {
         //var resp = await fetch(this.serverUrl + '/api/category');
         //var resp = await fetch(url);
         //this.categoryList = await resp.json();
