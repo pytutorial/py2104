@@ -24,3 +24,19 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data: {
+    product: {}
+  },
+  mounted: async function() {
+    var href = window.location.toString();
+    var pos = href.indexOf('?id=');
+    var id = href.substring(pos+4);
+    var url = 'http://127.0.0.1:8000/api/product/'+id;
+    var resp = await fetch(url);
+    this.product = await resp.json();
+  }
+}
+</script>
