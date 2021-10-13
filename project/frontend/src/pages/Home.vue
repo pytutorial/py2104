@@ -105,13 +105,20 @@
           productList:[],
           name: '',
           categoryId: '',
-          serverUrl: 'http://127.0.0.1:8000'
+          serverUrl: 'http://127.0.0.1:8000',
+          categoryList: []
       }
     },
 
     methods: {
       getImageUrl: function(product){
         return this.serverUrl + product.image;
+      },
+
+      getCategoryList: function() {
+        //var resp = await fetch(this.serverUrl + '/api/category');
+        //var resp = await fetch(url);
+        //this.categoryList = await resp.json();
       },
 
       search: async function() {
@@ -124,6 +131,7 @@
     },
 
     mounted: async function() {
+      this.getCategoryList();
       this.search();
     }
   }
