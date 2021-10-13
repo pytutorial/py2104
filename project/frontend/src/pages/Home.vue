@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container mt-5">
+  <div class="container mt-5">
     <div class="row">
       <div class="col-3" style="border: 1px solid #ddd; border-radius: 4px">
         <div class="form-group mt-4">
