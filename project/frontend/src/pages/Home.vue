@@ -94,11 +94,13 @@
 
 <script> 
   export default {
-    data: {
-      productList:[],
-      name: '',
-      categoryId: '',
-      serverUrl: 'http://127.0.0.1:8000'
+    data: function() {
+      return {
+          productList:[],
+          name: '',
+          categoryId: '',
+          serverUrl: 'http://127.0.0.1:8000'
+      }
     },
 
     methods: {
