@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container mt-5">
+  <div class="container mt-5">
     <div class="row">
       <div class="col-6">
         <img width="100%" :src='product.image' />
