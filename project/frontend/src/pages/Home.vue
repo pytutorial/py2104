@@ -94,6 +94,29 @@
 
 <script> 
   export default {
-    //TODO: Copy Line 56 .. 79
+    data: {
+      productList:[],
+      name: '',
+      categoryId: '',
+      serverUrl: 'http://127.0.0.1:8000'
+    },
+
+    methods: {
+      getImageUrl: function(product){
+        return this.serverUrl + product.image;
+      },
+
+      search: async function() {
+        var url = this.serverUrl + '/api/get-product-list?name='+this.name;
+        var resp = await fetch(url);
+        var result = await resp.json();
+        console.log(result);
+        this.productList = result;
+      }
+    },
+
+    mounted: async function() {
+      this.search();
+    }
   }
 </script>
