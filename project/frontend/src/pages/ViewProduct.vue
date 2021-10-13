@@ -27,8 +27,10 @@
 
 <script>
 export default {
-  data: {
-    product: {}
+  data: function() {
+    return {
+      product: {}
+    }
   },
   mounted: async function() {
     var href = window.location.toString();
