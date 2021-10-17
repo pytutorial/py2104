@@ -73,7 +73,7 @@
           var url = 'http://127.0.0.1:8000/api/order-product/'+this.id;
           var resp = await fetch(url, {method: 'POST', body: data});
           if(resp.ok) {
-            location.href = 'thank_you.html';
+            this.$router.push('/thank-you');
           }else{
             this.errors = await resp.json();
           }
