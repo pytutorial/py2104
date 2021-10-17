@@ -41,7 +41,7 @@ export default {
       //alert(result.access);
       localStorage.setItem('token', result.access);
       //location.href = 'index.html';
-      this.$router.push('/');
+      this.$router.push('/staff/order-list');
     }
   }
 }
