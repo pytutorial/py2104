@@ -1,0 +1,15 @@
+<form id="fmt" onsubmit="login(event)">
+    <p>Tên đăng nhập: <input name="username"/></p>
+    <p>Mật khẩu: <input name="password" type="password"/></p>
+    <button>Đăng nhập</button>
+</form>
+
+<script>
+    async function login(event){
+        event.preventDefault();
+        var data = new FormData(document.getElementById('fmt'));
+        var resp = await fetch('http://127.0.0.1:8000/api/token', {body: data, method: 'POST'});
+        var result = await resp.json();
+        alert(result.access);
+    }
+</script>
