@@ -3,7 +3,7 @@
     <div class="login-form">
       <h3>Đăng nhập</h3>
       <br>
-      <form method="POST">
+      <form @submit.prevent="login()" method="POST">
         <div class="form-group">
           <label>Tên tài khoản</label>
           <input name="username" type="text" class="form-control" />
@@ -27,6 +27,16 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    login: async function(){
+      alert('login')
+    }
+  }
+}
+</script>
+
 <style scoped>
   .bg-login {
     position: relative;
