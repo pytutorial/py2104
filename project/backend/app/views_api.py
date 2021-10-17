@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.serializers import ModelSerializer, CharField
 
 from rest_framework.viewsets import ModelViewSet
-from .models import Customer, Product
+from .models import Category, Customer, Product
 from .models import Order
 
 class OrderSerializer(ModelSerializer):
@@ -75,3 +75,12 @@ class ProductSerializer(ModelSerializer):
 class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+
+class CategorySerializer(ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class CategoryViewSet(ModelViewSet):
+    serializer_class = CategorySerializer
+    queryset = Category.objects.all()

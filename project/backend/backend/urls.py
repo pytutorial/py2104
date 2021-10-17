@@ -18,6 +18,7 @@ from django.urls import path
 from app.views import *
 from app.views_api import *
 from rest_framework.routers import DefaultRouter
+
 urlpatterns = [
     path('api/order-product/<pk>', order_product),
     path('api/get-product-list', get_product_list),
@@ -28,6 +29,11 @@ urlpatterns = [
     path('view-product/<pk>', view_product),
     path('admin/', admin.site.urls),
 ]
+
+routers = DefaultRouter()
+routers.register('api/category', CategoryViewSet)
+urlpatterns += routers.urls
+
 routers = DefaultRouter()
 routers.register('api/product', ProductViewSet)
 urlpatterns += routers.urls

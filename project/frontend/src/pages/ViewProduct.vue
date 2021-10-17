@@ -19,7 +19,7 @@
           </tbody>
         </table>
         <router-link to='/' class="btn btn-secondary mr-2">Quay lại</router-link>
-        <a :href='`order_product.html?id=${product.id}`' class="btn btn-primary">Mua hàng</a>
+        <router-link :to='`/order-product/${product.id}`' class="btn btn-primary">Mua hàng</router-link>
       </div>
     </div>
   </div>

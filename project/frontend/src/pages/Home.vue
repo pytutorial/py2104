@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div id="app" class="container mt-5">
     <div class="row">
       <div class="col-3" style="border: 1px solid #ddd; border-radius: 4px">
         <div class="form-group mt-4">
@@ -22,32 +22,14 @@
             />
             Tất cả
           </p>
-          <p class="mb-2">
+          <p class="mb-2" v-for="category in categoryList" :key="category.id">
             <input
               v-model="categoryId"
-              value="1"
+              :value="category.id"
               type="radio"
               name="categoryId"
             />
-            Acer
-          </p>
-          <p class="mb-2">
-            <input
-              v-model="categoryId"
-              value="2"
-              type="radio"
-              name="categoryId"
-            />
-            Asus
-          </p>
-          <p class="mb-2">
-            <input
-              v-model="categoryId"
-              value="3"
-              type="radio"
-              name="categoryId"
-            />
-            Lenovo
+            {{category.name}}
           </p>
         </div>
 
@@ -116,9 +98,8 @@
       },
 
       getCategoryList: async function() {
-        //var resp = await fetch(this.serverUrl + '/api/category');
-        //var resp = await fetch(url);
-        //this.categoryList = await resp.json();
+        var resp = await fetch(this.serverUrl + '/api/category');
+        this.categoryList = await resp.json();
       },
 
       search: async function() {
