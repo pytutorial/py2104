@@ -11,5 +11,7 @@
         var resp = await fetch('http://127.0.0.1:8000/api/token', {body: data, method: 'POST'});
         var result = await resp.json();
         alert(result.access);
+        localStorage.setItem('token', result.access);
+        location.href = 'index.html';
     }
 </script>
