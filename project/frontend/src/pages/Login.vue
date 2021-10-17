@@ -3,7 +3,7 @@
     <div class="login-form">
       <h3>Đăng nhập</h3>
       <br>
-      <form @submit.prevent="login()" method="POST">
+      <form id="fmt" @submit.prevent="login()" method="POST">
         <div class="form-group">
           <label>Tên tài khoản</label>
           <input name="username" type="text" class="form-control" />
@@ -31,7 +31,13 @@
 export default {
   methods: {
     login: async function(){
-      alert('login')
+      var data = new FormData(document.getElementById('fmt'));
+      var resp = await fetch('http://127.0.0.1:8000/api/token', {body: data, method: 'POST'});
+      var result = await resp.json();
+      alert(result.access);
+      localStorage.setItem('token', result.access);
+      //location.href = 'index.html';
+      this.$router.push('/');
     }
   }
 }
