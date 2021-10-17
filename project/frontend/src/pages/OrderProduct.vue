@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="container mt-3">
+  <div class="container mt-3">
     <h3>Đặt mua hàng trực tuyến</h3>
     <form id="fmt" @submit.prevent="orderProduct()">
       <table class="table">
