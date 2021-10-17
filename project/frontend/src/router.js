@@ -5,6 +5,9 @@ import ViewProduct from '@/pages/ViewProduct'
 import OrderProduct from '@/pages/OrderProduct'
 import ThankYou from '@/pages/ThankYou'
 import Login from '@/pages/Login'
+import OrderList from '@/pages/staff/OrderList'
+import OrderDetail from '@/pages/staff/OrderDetail'
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -13,6 +16,8 @@ const routes = [
     {path: '/order-product/:id', component: OrderProduct, meta:{page:1}},
     {path: '/thank-you', component: ThankYou, meta:{page:1}},
     {path: '/login', component: Login},
+    {path: '/staff/order-list', component: OrderList},
+    {path: '/staff/order-detail', component: OrderDetail},
 ]
 
 const router = new VueRouter({routes})
