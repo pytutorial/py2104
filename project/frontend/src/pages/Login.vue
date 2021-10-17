@@ -33,8 +33,12 @@ export default {
     login: async function(){
       var data = new FormData(document.getElementById('fmt'));
       var resp = await fetch('http://127.0.0.1:8000/api/token', {body: data, method: 'POST'});
+      if(!resp.ok) {
+        alert('Tên đăng nhập hoặc mật khẩu không đúng');
+        return;
+      }
       var result = await resp.json();
-      alert(result.access);
+      //alert(result.access);
       localStorage.setItem('token', result.access);
       //location.href = 'index.html';
       this.$router.push('/');
