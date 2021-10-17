@@ -18,8 +18,10 @@ from django.urls import path
 from app.views import *
 from app.views_api import *
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
+    path('api/token', jwt_views.TokenObtainPairView.as_view()),
     path('api/order-product/<pk>', order_product),
     path('api/get-product-list', get_product_list),
     path('api/get-customer-list', get_customer_list),
