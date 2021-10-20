@@ -26,6 +26,10 @@
     </nav>
 
     <router-view></router-view> 
+
+    <div class="container mt-3" v-if="$route.path=='/staff/'||$route.path=='/staff'">
+      Trang dành cho nhân viên cửa hàng
+    </div>
   </div>
 </template>
 <script>

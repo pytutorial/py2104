@@ -81,39 +81,40 @@
 </style>
 
 <script> 
-  export default {
-    data: function() {
-      return {
-          productList:[],
-          name: '',
-          categoryId: '',
-          serverUrl: 'http://127.0.0.1:8000',
-          categoryList: []
-      }
-    },
-
-    methods: {
-      getImageUrl: function(product){
-        return this.serverUrl + product.image;
-      },
-
-      getCategoryList: async function() {
-        var resp = await fetch(this.serverUrl + '/api/category');
-        this.categoryList = await resp.json();
-      },
-
-      search: async function() {
-        var url = this.serverUrl + '/api/get-product-list?name='+this.name;
-        var resp = await fetch(url);
-        var result = await resp.json();
-        console.log(result);
-        this.productList = result;
-      }
-    },
-
-    mounted: async function() {
-      this.getCategoryList();
-      this.search();
+import { SERVER_URL} from "@/constants";
+export default {
+  data: function() {
+    return {
+        productList:[],
+        name: '',
+        categoryId: '',
+        serverUrl: SERVER_URL,
+        categoryList: []
     }
+  },
+
+  methods: {
+    getImageUrl: function(product){
+      return this.serverUrl + product.image;
+    },
+
+    getCategoryList: async function() {
+      var resp = await fetch(this.serverUrl + '/api/category');
+      this.categoryList = await resp.json();
+    },
+
+    search: async function() {
+      var url = this.serverUrl + '/api/get-product-list?name='+this.name;
+      var resp = await fetch(url);
+      var result = await resp.json();
+      console.log(result);
+      this.productList = result;
+    }
+  },
+
+  mounted: async function() {
+    this.getCategoryList();
+    this.search();
   }
+}
 </script>

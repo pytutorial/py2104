@@ -58,32 +58,33 @@
   </div>
 </template>
 <script>
-    export default {
-      data: function(){
-       return {
-          id: null,
-          product:{},
-          errors: {}
-        }
-      },
-      methods: {
-        orderProduct: async function(){
-          //alert('save');
-          var data = new FormData(document.getElementById('fmt'));
-          var url = 'http://127.0.0.1:8000/api/order-product/'+this.id;
-          var resp = await fetch(url, {method: 'POST', body: data});
-          if(resp.ok) {
-            this.$router.push('/thank-you');
-          }else{
-            this.errors = await resp.json();
-          }
-        }
-      },
-      mounted: async function() {
-        this.id = this.$route.params.id;
-        var url = 'http://127.0.0.1:8000/api/product/'+this.id;
-        var resp = await fetch(url);
-        this.product = await resp.json();
+import { SERVER_URL} from "@/constants";
+export default {
+  data: function(){
+    return {
+      id: null,
+      product:{},
+      errors: {},
+    }
+  },
+  methods: {
+    orderProduct: async function(){
+      //alert('save');
+      var data = new FormData(document.getElementById('fmt'));
+      var url = `${SERVER_URL}/api/order-product/${this.id}`;
+      var resp = await fetch(url, {method: 'POST', body: data});
+      if(resp.ok) {
+        this.$router.push('/thank-you');
+      }else{
+        this.errors = await resp.json();
       }
     }
-  </script>
+  },
+  mounted: async function() {
+    this.id = this.$route.params.id;
+    var url = `${SERVER_URL}/api/product/${this.id}`;
+    var resp = await fetch(url);
+    this.product = await resp.json();
+  }
+}
+</script>

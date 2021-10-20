@@ -1,16 +1,66 @@
 from datetime import datetime
+from django.db.models import Q
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
-from rest_framework.serializers import ModelSerializer, CharField
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.serializers import ModelSerializer, CharField, DateTimeField, IntegerField
 
 from rest_framework.viewsets import ModelViewSet
 from .models import Category, Customer, Product
 from .models import Order
 
+PAGE_SIZE = 5
+
 class OrderSerializer(ModelSerializer):
     class Meta:
         model = Order
-        fields = ['customer_phone', 'customer_name', 'customer_address', 'qty']
+        fields = ['id', 'customer_phone', 'customer_name', 'customer_address', 'qty', 
+                    'price_unit', 'status', 'order_date', 'deliver_date', 'product_name']
+    
+    product_name = CharField(read_only=True, source='product.name')
+    price_unit = IntegerField(read_only=True)
+    order_date = DateTimeField(read_only=True, format="%d/%m/%Y %H:%M:%S")
+    deliver_date = DateTimeField(read_only=True, format="%d/%m/%Y %H:%M:%S")
+    status = IntegerField(read_only=True)
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def search_order(request):
+    name = request.GET.get('name', '')
+    order_list = Order.objects.filter(
+        Q(customer_name__icontains=name) |
+        Q(customer_phone__icontains=name)|
+        Q(product__name__contains=name)
+    )
+    total = order_list.count()
+    page = int(request.GET.get('page') or 1)
+    order_list = order_list[(page-1)*PAGE_SIZE:page*PAGE_SIZE]
+    data = OrderSerializer(order_list, many=True).data
+    return Response({'total': total, 'data': data})
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
+def view_order(request, pk):
+    order = Order.objects.get(pk=pk)
+    data = OrderSerializer(order).data
+    return Response(data)
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+def confirm_order(request, pk):
+    order = Order.objects.get(pk=pk)
+    order.status = Order.Status.DELIVERED
+    order.deliver_date = datetime.now()
+    order.save()
+    return Response({'success': True})
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated,))
+def cancel_order(request, pk):
+    order = Order.objects.get(pk=pk)
+    order.status = Order.Status.CANCELED
+    order.save()
+    return Response({'success': True})
 
 @api_view(['POST'])
 def order_product(request, pk):
@@ -45,8 +95,6 @@ def create_customer(request):
     else:
         serializer.save()
         return Response({'success': True})
-
-PAGE_SIZE = 2
 
 @api_view(['GET'])
 def get_customer_list(request):

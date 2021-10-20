@@ -22,6 +22,11 @@ from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
     path('api/token', jwt_views.TokenObtainPairView.as_view()),
+    path('api/search-order', search_order),
+    path('api/view-order/<pk>', view_order),
+    path('api/confirm-order/<pk>', confirm_order),
+    path('api/cancel-order/<pk>', cancel_order),
+
     path('api/order-product/<pk>', order_product),
     path('api/get-product-list', get_product_list),
     path('api/get-customer-list', get_customer_list),
